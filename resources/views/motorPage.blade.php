@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Home</h1>
-    <a href="/motorPage"> Motor Page</a>
+    <h1>Motor Page</h1>
+    <a href="/about"> About</a>
 
 @endsection
