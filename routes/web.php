@@ -22,3 +22,7 @@ Route::get('/', function () {
 Route::get('/about', [AboutController::class, 'show']);
 
 Route::get('/motorPage', [MotorController::class, 'show']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
