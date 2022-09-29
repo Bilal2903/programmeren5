@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <a href="/about">Naar About</a>
                 </div>
             </div>
         </div>
