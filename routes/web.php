@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 
-
 Route::get('/about', [AboutController::class, 'show']);
 
 Route::get('/motorPage', [MotorController::class, 'show']);

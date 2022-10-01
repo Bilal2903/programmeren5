@@ -9,10 +9,12 @@ class MotorController extends Controller
 {
     public function show() {
 
-        $motor = Motor::all();
+        $headTitle = 'All Motor Bikes';
+
+        $motors = Motor::all();
 
         return view('motorPage',
-            compact("motor"));
+            compact('headTitle', 'motors'));
 
     }
 }
