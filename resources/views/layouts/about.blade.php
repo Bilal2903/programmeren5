@@ -1,16 +1,3 @@
-{{--@extends('layouts.web')--}}
-{{--@extends('layouts.app')--}}
-{{--@extends('home')--}}
-{{--@section('content')--}}
-
-{{--    <h1> About</h1>--}}
-{{--    <a href="/"> Home Page</a> <br>--}}
-{{--    <a href="/motorPage"> Motor Page</a>--}}
-
-{{--@endsection--}}
-
-{{--@yield('content')--}}
-
 @extends('layouts.app')
 
 @section('content')
@@ -28,6 +15,8 @@
                         @endif
 
                         {{ __('TODO') }}
+                        <li>Vragen wat we ook al weer moesten zetten in terminal voor de database.</li>
+                        <li>Mail verificatie bouwen en kijken waar de fout aan ligt.</li>
                         <li>Admin inlog systeem</li>
                         <li>nieuwe page voor gebruiker na inloggen</li>
                         <li>profile page voor gebruiker</li>

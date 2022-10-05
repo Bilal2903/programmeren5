@@ -13,7 +13,7 @@ class MotorController extends Controller
 
         $motors = Motor::all();
 
-        return view('motorPage',
+        return view('/layouts/motorPage',
             compact('headTitle', 'motors'));
 
     }

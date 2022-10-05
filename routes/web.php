@@ -22,6 +22,6 @@ Route::get('/about', [AboutController::class, 'show']);
 
 Route::get('/motorPage', [MotorController::class, 'show']);
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware(["verified"]);
