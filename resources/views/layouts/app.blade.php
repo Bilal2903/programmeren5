@@ -32,6 +32,7 @@
                     <ul class="navbar-nav me-auto">
                         <li><a href="/about"> About Page</a></li>
                         <li><a href="/motorPage"> Motor Page</a></li>
+                        <li><a href="/data"> Data Page</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -47,6 +48,12 @@
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('adminLogin'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('adminLogin') }}">{{ __('Admin') }}</a>
                                 </li>
                             @endif
                         @else
