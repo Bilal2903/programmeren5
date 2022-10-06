@@ -10,4 +10,8 @@ class Motor extends Model
     use HasFactory;
 
     protected $table = 'motor';
+
+    protected $fillable = [
+
+    ];
 }

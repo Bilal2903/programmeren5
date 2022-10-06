@@ -24,10 +24,12 @@ Route::get('/about', [AboutController::class, 'show']);
 
 Route::get('/motorPage', [MotorController::class, 'show']);
 
-Auth::routes(['verify' => true]);
+Auth::routes(['verify' => false]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/data', [DatabaseController::class, 'index'])->name('data')->middleware(["verified"]);
+Route::get('/data', [DatabaseController::class, '__construct'])->name('data');
+
+Route::resource("motor", App\Http\Controllers\MotorController::class);
 
 Route::get('/adminLogin', [AdminLoginController::class, 'index'])->name('adminLogin');

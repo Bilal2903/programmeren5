@@ -16,8 +16,8 @@
                         @endif
 
                         {{ __('TODO') }}
-                        <li>Vragen wat we ook al weer moesten zetten in terminal voor de database.</li>
-                        <li>Mail verificatie bouwen en kijken waar de fout aan ligt.</li>
+                        <li>Paginas maken voor de CRUD die het ook echt doen</li>
+                        <li>Crud functionaliteiten</li>
                         <li>Admin inlog systeem</li>
                         <li>nieuwe page voor gebruiker na inloggen</li>
                         <li>profile page voor gebruiker</li>

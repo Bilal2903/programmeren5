@@ -2,39 +2,38 @@
 
 @section('content')
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">All Database</div>
+<h1>Overzicht van de data</h1>
 
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        <table>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Description</th>
-                            <th>Horsepower</th>
-                            <th>Image</th>
-                            @foreach($motors as $motor)
-                                <tr>
-                                    <td>{{$motor->name}}</td>
-                                    <td>{{$motor->price}}</td>
-                                    <td>{{$motor->description}}</td>
-                                    <td>{{$motor->horsepower}}</td>
-                                    <td>{{$motor->image}}</td>
-                                </tr>
+<table class="table" style="max-width: 100%">
+    <th scope ="col">Name</th>
+    <th scope ="col">Price</th>
+    <th scope ="col">Description</th>
+    <th scope ="col">Horsepower</th>
+    <th scope ="col">Image</th>
+    <th scope ="col">Actions</th>
 
-                            @endforeach
-                        </table>
-                    </div>
+    @foreach($motors as $motor)
+        <tr>
+            <td>{{$motor->name}}</td>
+            <td>{{$motor->price}}</td>
+            <td>{{$motor->description}}</td>
+            <td>{{$motor->horsepower}}</td>
+            <td>{{$motor->image}}</td>
+
+
+            <td>
+                <div class="btn-groep">
+                    <a href="edit/{{$motor->id}}" class="btn btn-success" style="margin-right: 20px">Edit</a>
+                    <a href="detail/{{$motor->id}}" class="btn btn-info" style="margin-right: 20px"> Details</a>
+                    <a href="delete/{{$motor->id}}" class="btn btn-danger">Delete</a>
                 </div>
-            </div>
-        </div>
-    </div>
+            </td>
+
+        </tr>
+    @endforeach
+</table>
+
+<a href="{{ route('motor.create') }}"> Create a motor post</a>
+
 @endsection
 
