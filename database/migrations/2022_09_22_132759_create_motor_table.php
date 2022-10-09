@@ -20,7 +20,7 @@ return new class extends Migration
             $table->float('description');
             $table->string('horsepower');
             $table->text('image');
-            $table->string('user_id');
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

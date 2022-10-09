@@ -11,7 +11,7 @@ class MotorController extends Controller
 
         $headTitle = 'All Motor Bikes';
 
-        $motors = Motor::all();
+        $motors = motor::all();
 
         return view('/layouts/motorPage',
             compact('headTitle', 'motors'));
@@ -22,19 +22,39 @@ class MotorController extends Controller
         return view('motor.create');
     }
 
+
     public function store(Request $request){
 
-        $request->validate([
-            'name' => 'required',
+        $formFields = $request->validate([
+            'name' => 'required|max:255',
             'price' => 'required',
             'description' => 'required',
             'horsepower' => 'required',
             'image' => 'nullable',
         ]);
 
-        motor::create($request->all());
+        $formFields['user_id'] = auth()->id();
 
-        return redirect(route('motor.create'));
+        Motor::create($formFields);
+
+        return redirect('/')->with('message', 'Listing created successfully!');
+
+//        DD($request->all());
+
+//        Motor::create($request->all());
+//        return redirect(route('motor.create'))->with('success', 'bike is successfully saved');
+
+//        $motor->user_id = Auth::user()->id;
+
+
+
+
+
+
+
+
+
+
 
     }
 
@@ -42,21 +62,21 @@ class MotorController extends Controller
 
         $motor = motor::find($id);
         $motor->delete();
-        return redirect(route('motor.index'));
+        return redirect(route('motor.show'));
     }
 
     public function edit($id){
 
         $motor = motor::find($id);
 
-        return view(route('motor.edit'));
+        return view(route('motor.edit'), compact('motor'));
     }
 
     public function update(Request $request, $id){
 
         $motor = motor::find($id);
 
-        return view(route('motor.edit'));
+        return view(route('motor.edit'), compact('motor'));
     }
 
 }

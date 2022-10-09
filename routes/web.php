@@ -19,17 +19,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about', [AboutController::class, 'show']);
 
 Route::get('/motorPage', [MotorController::class, 'show']);
-
-Auth::routes(['verify' => false]);
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/data', [DatabaseController::class, '__construct'])->name('data');
 
 Route::resource("motor", App\Http\Controllers\MotorController::class);
 
 Route::get('/adminLogin', [AdminLoginController::class, 'index'])->name('adminLogin');
+
+Auth::routes(['verify' => true]);
