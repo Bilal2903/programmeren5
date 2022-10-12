@@ -12,10 +12,29 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        laravel: '#ef3b2d',
+                    },
+                },
+            },
+        }
+    </script>
 </head>
+
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -30,9 +49,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li><a href="/about"> About Page</a></li>
-                        <li><a href="/motorPage"> Motor Page</a></li>
-                        <li><a href="/data"> Data Page</a></li>
+                        <li class="p-2"><a href="/about"> About Page</a></li>
+                        <li class="p-2"><a href="/motorPage"> Motor Page</a></li>
+                        <li class="p-2"><a href="/data"> Data Page</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -50,16 +69,10 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-
-                            @if (Route::has('adminLogin'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('adminLogin') }}">{{ __('Admin') }}</a>
-                                </li>
-                            @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    Welcome {{auth()->user()->name}}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -67,6 +80,10 @@
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('user.show', Auth::user()->id) }}">
+                                        Account
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -80,8 +97,15 @@
             </div>
         </nav>
 
+        @if(session()->has('message'))
+            <div class="fixed top-0 right-1/2 transform-translate-x-1/2 bg-laravel text-black px-48 py-3">
+                <p> {{session('message')}} </p>
+            </div>
+        @endif
+
         <main class="py-4">
             @yield('content')
+
         </main>
     </div>
 </body>

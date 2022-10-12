@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class MotorController extends Controller
 {
-    public function show() {
+    // Show all Bikes
+    public function index() {
 
         $headTitle = 'All Motor Bikes';
 
@@ -16,7 +17,17 @@ class MotorController extends Controller
         return view('/layouts/motorPage',
             compact('headTitle', 'motors'));
 
+//        return view('motor.index', [
+//            'listings' => Listing::latest()->filter(request(['tag', 'search']))->paginate(6)
+//        ]);
     }
+
+    // Show singel Bike
+    public function show($id) {
+        $details = Motor::find($id);
+        return view('motor/detail', compact('id', 'details'));
+    }
+
 
     public function create(){
         return view('motor.create');
@@ -31,13 +42,14 @@ class MotorController extends Controller
             'description' => 'required',
             'horsepower' => 'required',
             'image' => 'nullable',
+            'tags' => 'required',
         ]);
 
         $formFields['user_id'] = auth()->id();
 
         Motor::create($formFields);
 
-        return redirect('/')->with('message', 'Listing created successfully!');
+        return redirect('/motorPage')->with('message', 'Motor post created successfully!');
 
 //        DD($request->all());
 
@@ -62,21 +74,31 @@ class MotorController extends Controller
 
         $motor = motor::find($id);
         $motor->delete();
-        return redirect(route('motor.show'));
+        return redirect(route('motor.index'));
     }
 
     public function edit($id){
 
-        $motor = motor::find($id);
-
-        return view(route('motor.edit'), compact('motor'));
+        $details = Motor::find($id);
+        return view('motor.edit', compact('id', 'details'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Motor $motor){
 
-        $motor = motor::find($id);
+        $formFields = request()->validate([
+            'name' => 'required|max:255',
+            'price' => 'required',
+            'description' => 'required',
+            'horsepower' => 'required',
+            'image' => 'nullable',
+            'tags' => 'required',
+        ]);
 
-        return view(route('motor.edit'), compact('motor'));
+        $motor -> update($formFields);
+
+//        $formFields['user_id'] = auth()->id();
+
+        return redirect(route('motor.show', $motor->id));
     }
 
 }

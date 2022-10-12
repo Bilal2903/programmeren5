@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->float('price');
-            $table->float('description');
+            $table->longText('description');
             $table->string('horsepower');
             $table->text('image');
+            $table->string('tags');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });

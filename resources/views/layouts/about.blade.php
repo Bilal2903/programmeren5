@@ -22,10 +22,6 @@
                         <li>nieuwe page voor gebruiker na inloggen</li>
                         <li>profile page voor gebruiker</li>
                         <li>aut zetten op admin pages</li>
-                        <li>motor page nette vakken maken zoals magazine</li>
-                        <li>Nav netjes maken</li>
-                        <li>pictogram plaatsen naast naam gebruiker of admin</li>
-                        <li>bij gebruiker in dropdown setting maken en profile</li>
                         <li>About page een beschrijving geven</li>
                     </div>
                 </div>
