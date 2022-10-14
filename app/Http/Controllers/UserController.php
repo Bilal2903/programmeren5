@@ -9,21 +9,20 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function show($id){
-        $user = User::find($id);
-        $loggedInUser = Auth::user()->id;
+    public function index()
+    {
+        $motors = Auth::user()->motors;
+        return view('layouts.data', compact('motors'));
 
-        if ($user->id === $loggedInUser) {
-            return view ('user.details',
-            compact('user'));
-        }else
-        {
-            return redirect(route('motor.index'));
-        }
+    }
+
+
+    public function show(User $user){
+       $user = Auth::user();
+       return view ('user.details', compact('user'));
     }
 
     public function edit($id){
-
         $user = User::find($id);
         return view('user/edit', compact('id', 'user'));
     }
@@ -39,8 +38,6 @@ class UserController extends Controller
         $user = User::find($id);
         $user -> update($request -> all());
         $user -> save();
-
-//        $formFields['user_id'] = auth()->id();
 
         return redirect(route('user.show', $user->id));
     }

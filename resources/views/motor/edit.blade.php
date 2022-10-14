@@ -6,7 +6,8 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-md-offset-3" style="">
                     <h2 class="text-center text-3xl font-bold mb-4">Edit your own motor post!</h2>
-                    <form action="{{ route('motor.update', $id) }}" method="post">
+                    <form action="{{ route('motor.update', $details->id) }}" method="post">
+
 
                         @csrf
                         @method('PUT')
@@ -45,18 +46,6 @@
                             <span style="">@error('horsepower'){{ $message }} @enderror</span>
                         </div>
 
-                        <div class="mb-6">
-                            <label for="tags" class="inline-block text mb-1"> Tags (Comma Separated)</label>
-                            <input type="text" class="border border-gray-200 rounded p-2 w-full" name="tags"
-                                   placeholder="Example: Laravel, Backend, Postgres, etc"
-                                   value="{{old('tags', $details -> tags)}}">
-                            <span style=""> @error('tags'){{$message}} @enderror</span>
-
-
-
-{{--                                @error('tags')--}}
-{{--                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>--}}
-{{--                                @enderror--}}
                         </div>
                         <div class="mb-6">
                             <div class="form-group m-2" style="">
@@ -72,7 +61,6 @@
 
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>

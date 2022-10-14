@@ -16,8 +16,7 @@
                         @endif
 
                         <p>Welkom op de bike page. Als je zelf een mooie motor hebt, plaats het
-                           gerust op de site zodat we het allemaal kunnen bewonderen. Kijk ook de meest actuele motor post
-                           van andere mensen. En probeer de nieuwe functie namelijk, het opslaan als favorite.
+                           gerust op de site zodat we het allemaal kunnen bewonderen.
                         </p>
                     </div>
                 </div>

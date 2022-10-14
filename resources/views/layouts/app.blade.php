@@ -51,7 +51,14 @@
                     <ul class="navbar-nav me-auto">
                         <li class="p-2"><a href="/about"> About Page</a></li>
                         <li class="p-2"><a href="/motorPage"> Motor Page</a></li>
-                        <li class="p-2"><a href="/data"> Data Page</a></li>
+                        <li class="p-2"><a href="/data"> Mijn motor posts</a></li>
+
+                        @if(Auth::user() && Auth::user()->is_admin)
+                            <li class="p-2"><a href="/clients"> Users</a></li>
+                        @elseif(Auth::guest())
+                        @endif
+
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

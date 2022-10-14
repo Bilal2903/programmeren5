@@ -3,10 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Motor;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MotorController extends Controller
 {
+    public function __construct(){
+
+        $headTitle = 'All Motor Bikes';
+
+        $motors = Motor::all();
+
+        $this->middleware('auth');
+        return view('.layouts.data', compact('headTitle', 'motors'));
+
+    }
+
+
     // Show all Bikes
     public function index() {
 
@@ -16,10 +30,6 @@ class MotorController extends Controller
 
         return view('/layouts/motorPage',
             compact('headTitle', 'motors'));
-
-//        return view('motor.index', [
-//            'listings' => Listing::latest()->filter(request(['tag', 'search']))->paginate(6)
-//        ]);
     }
 
     // Show singel Bike
@@ -41,32 +51,15 @@ class MotorController extends Controller
             'price' => 'required',
             'description' => 'required',
             'horsepower' => 'required',
-            'image' => 'nullable',
+            'image' => 'required',
             'tags' => 'required',
         ]);
 
-        $formFields['user_id'] = auth()->id();
+        $formFields['user_id'] = Auth::user()->id;
 
         Motor::create($formFields);
 
         return redirect('/motorPage')->with('message', 'Motor post created successfully!');
-
-//        DD($request->all());
-
-//        Motor::create($request->all());
-//        return redirect(route('motor.create'))->with('success', 'bike is successfully saved');
-
-//        $motor->user_id = Auth::user()->id;
-
-
-
-
-
-
-
-
-
-
 
     }
 
@@ -74,13 +67,21 @@ class MotorController extends Controller
 
         $motor = motor::find($id);
         $motor->delete();
+
         return redirect(route('motor.index'));
     }
 
-    public function edit($id){
+    public function edit($motorId){
 
-        $details = Motor::find($id);
-        return view('motor.edit', compact('id', 'details'));
+        $details = Motor::find($motorId);
+
+        if ($details->user_id === Auth::id()){
+            return view ('motor.edit',
+                compact('details'));
+        }else
+        {
+            return redirect(route('motor.index'));
+        }
     }
 
     public function update(Motor $motor){
@@ -95,8 +96,6 @@ class MotorController extends Controller
         ]);
 
         $motor -> update($formFields);
-
-//        $formFields['user_id'] = auth()->id();
 
         return redirect(route('motor.show', $motor->id));
     }

@@ -20,7 +20,6 @@ return new class extends Migration
             $table->longText('description');
             $table->string('horsepower');
             $table->text('image');
-            $table->string('tags');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });

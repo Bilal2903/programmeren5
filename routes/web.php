@@ -1,8 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
-use App\Http\Controllers\AdminLoginController;
-use App\Http\Controllers\DatabaseController;
+use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MotorController;
 use App\Http\Controllers\UserController;
@@ -26,10 +25,10 @@ Route::get('/about', [AboutController::class, 'show']);
 
 Route::get('/motorPage', [MotorController::class, 'index']);
 Route::get('/show', [MotorController::class, 'show']);
-
-Route::get('/data', [DatabaseController::class, '__construct'])->name('data');
-
+Route::get('/data', [UserController::class, 'index'])->name('data')->middleware('auth');
 Route::resource("motor", App\Http\Controllers\MotorController::class);
+
+Route::get('/clients', [ClientsController::class, '__construct'])->name('clients');
 
 Route::resource('user', UserController::class);
 
