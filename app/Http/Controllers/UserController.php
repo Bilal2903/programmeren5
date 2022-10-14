@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -13,13 +12,18 @@ class UserController extends Controller
     {
         $motors = Auth::user()->motors;
         return view('layouts.data', compact('motors'));
-
     }
 
 
     public function show(User $user){
-       $user = Auth::user();
-       return view ('user.details', compact('user'));
+
+        if ($user = Auth::user()){
+             return view ('user.details', compact('user'));
+        }else
+        {
+            return redirect(route('motor.index'));
+        }
+
     }
 
     public function edit($id){
@@ -32,7 +36,6 @@ class UserController extends Controller
         $request ->validate([
             'name' => 'required|max:255',
             'email' => 'required',
-            'password' => Hash::make($request['password']),
         ]);
 
         $user = User::find($id);

@@ -12,50 +12,67 @@
 
                         <div class="form-group" style="">
                             <label for="">Name of the bike</label>
-                            <input type="text" class="form-control" name="name"
+                            <input type="text"
+                                   class="form-control"
+                                   name="name"
                                    placeholder="Enter the name of the bike"
-                                   value="{{old('name')}}">
+                                   value="{{old('name')}}"
+                            >
                             <span class="text-red-500 text-xs mt-1z">@error('name'){{ $message }} @enderror</span>
 
                         </div>
 
                         <div class="form-group" style="">
                             <label for="">Price</label>
-                            <input type="text" class="form-control" name="price"
+                            <input type="text"
+                                   class="form-control"
+                                   name="price"
                                    placeholder="Enter the price of the bike"
-                                   value="{{old('price')}}">
+                                   value="{{old('price')}}"
+                            >
                             <span class="text-red-500 text-xs mt-1">@error('price'){{ $message }} @enderror</span>
                         </div>
 
                         <div class="form-group" style="">
                             <label for="">Description</label>
-                            <input type="text" class="form-control" name="description"
+                            <input type="text"
+                                   class="form-control"
+                                   name="description"
                                    placeholder="Enter the description of the bike"
-                                   value="{{old('description')}}">
+                                   value="{{old('description')}}"
+                            >
                             <span class="text-red-500 text-xs mt-1">@error('description'){{ $message }} @enderror</span>
                         </div>
 
                         <div class="form-group" style="">
                             <label for="">Horsepower</label>
-                            <input type="text" class="form-control" name="horsepower"
+                            <input type="text"
+                                   class="form-control"
+                                   name="horsepower"
                                    placeholder="Enter the horsepower of the bike"
-                                   value="{{old('horsepower')}}">
+                                   value="{{old('horsepower')}}"
+                            >
                             <span class="text-red-500 text-xs mt-1">@error('horsepower'){{ $message }} @enderror</span>
                         </div>
 
-                        <div class="mb-6">
-                            <label for="tags" class="inline-block text mb-1"> Tags (Comma Separated)</label>
-                            <input type="text" class="border border-gray-200 rounded p-2 w-full" name="tags"
-                                   placeholder="Example: Kawasaki, Yamaha, Honda, BMW" value="{{old('tags')}}" />
+                        @foreach($categories as $category)
+                            <div class="form-check form-switch">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">{{$category->name}}</label>
+                                <input class="form-check-input"
+                                       type="checkbox"
+                                       id="flexSwitchCheckDefault"
+                                       value="{{$category->id}}"
+                                       name="category"
+                                >
+                                <span class="text-red-500 text-xs mt-1">@error('category'){{ $message }} @enderror</span>
+                            </div>
+                        @endforeach
 
-                            @error('tags')
-                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                            @enderror
-                        </div>
                         <div class="mb-6">
                             <div class="form-group m-2" style="">
                                 <label for="image">Bike Image</label>
                                 <input type="file" id="image" name="image">
+                                <span class="text-red-500 text-xs mt-1">@error('image'){{ $message }} @enderror</span>
                             </div>
 
                             <div class="form-group" style="">

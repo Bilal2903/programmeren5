@@ -19,6 +19,7 @@ class Motor extends Model
         'horsepower',
         'image',
         'user_id',
+        'category_id',
     ];
 
 

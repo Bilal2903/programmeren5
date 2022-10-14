@@ -12,7 +12,8 @@
     </div>
 </div>
 
-<form action="">
+<form method="GET" action="{{ route('search.index') }}">
+    @csrf
     <div class="relative border-2 border-gray-100 m-4 rounded-lg" style="width: 40%">
         <div class="absolute top-4 left-3">
             <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
@@ -21,7 +22,9 @@
                name="search"
                class="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
                placeholder="Search Motor posts..."
+               value="{{ request('search') }}"
         />
+
         <div class="absolute top-2 right-2">
             <button
                 type="submit"
@@ -29,7 +32,6 @@
             </button>
         </div>
     </div>
-
 </form>
 
 
@@ -47,43 +49,27 @@
                     <img class="w-48 mr-6 mb-6"{{$motor->image}}>
                     <div class="border border-gray-200 w-full mb-6"></div>
 
-
                     <div>
-                        <div class="border border-gray-200 w-full mb-6"></div>
                         <h3 class="text-2xl font-bold mb-1">Bike Description:</h3>
-                        <div>
-                            <div class="text-lg space-y-6">Horsepower:
-                                {{$motor->horsepower}}
-                            </div>
-                        </div>
-                        <div class="text-lg space-y-6">
+
+                        <div class="text-lg space-y-6 my-4">
                             {{$motor->description}}
                         </div>
 
+                        <div>
+                            <div class="text-lg my-4">Horsepower:
+                                {{$motor->horsepower}}
+                            </div>
+                        </div>
                         <div class="text-lg my-4">
                             <i class="fa-solid ">€</i> {{$motor->price}}
                         </div>
-{{--                        <div>--}}
-{{--                            <button class="h-10 w-20 text-black rounded-lg bg-red-500 hover:bg-red-600">--}}
-{{--                                <a href="{{ route('motor.show'), $motor->id }}">Details</a>--}}
-{{--                            </button>--}}
-{{--                        </div>--}}
+
                     </div>
                 </div>
             </card>
         </div>
     @endforeach
-
-        {{-- <x-card class="mt-4 p-2 flex space-x-6">
-          <a href="/listings/{{$listing->id}}/edit">
-            <i class="fa-solid fa-pencil"></i> Edit
-          </a>
-          <form method="POST" action="/listings/{{$listing->id}}">
-            @csrf
-            @method('DELETE')
-            <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
-          </form>
-        </x-card> --}}
 </div>
 
 

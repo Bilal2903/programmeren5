@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Motor;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -36,11 +37,15 @@ class MotorController extends Controller
     public function show($id) {
         $details = Motor::find($id);
         return view('motor/detail', compact('id', 'details'));
+
     }
 
 
     public function create(){
-        return view('motor.create');
+
+        $categories = Category::all();
+
+        return view('motor.create', compact('categories'));
     }
 
 
@@ -52,10 +57,12 @@ class MotorController extends Controller
             'description' => 'required',
             'horsepower' => 'required',
             'image' => 'required',
-            'tags' => 'required',
+            'category' => 'required',
         ]);
 
         $formFields['user_id'] = Auth::user()->id;
+
+        $formFields['category_id'] = $request->input('category');
 
         Motor::create($formFields);
 
@@ -92,7 +99,6 @@ class MotorController extends Controller
             'description' => 'required',
             'horsepower' => 'required',
             'image' => 'nullable',
-            'tags' => 'required',
         ]);
 
         $motor -> update($formFields);

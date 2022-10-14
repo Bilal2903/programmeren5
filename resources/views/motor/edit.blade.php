@@ -46,7 +46,6 @@
                             <span style="">@error('horsepower'){{ $message }} @enderror</span>
                         </div>
 
-                        </div>
                         <div class="mb-6">
                             <div class="form-group m-2" style="">
                                 <label for="image">Bike Image:</label><br>
