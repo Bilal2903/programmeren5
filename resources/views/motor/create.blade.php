@@ -59,7 +59,7 @@
                             <div class="form-check form-switch">
                                 <label class="form-check-label" for="flexSwitchCheckDefault">{{$category->name}}</label>
                                 <input class="form-check-input"
-                                       type="checkbox"
+                                       type="radio"
                                        id="flexSwitchCheckDefault"
                                        value="{{$category->id}}"
                                        name="category"
@@ -76,7 +76,7 @@
                             </div>
 
                             <div class="form-group" style="">
-                                <button type="submit" style="width: 100%; height: 35px" class="btn btn-primary btn btn-primary bg-blue-500 hover:bg-blue-600"
+                                <button type="submit" style="width: 100%; height: 35px" class="btn btn-outline-secondary "
                                         name="create" value="Opslaan"> Maak je motor post
                                 </button>
                             </div>

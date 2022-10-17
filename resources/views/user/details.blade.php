@@ -12,6 +12,6 @@
     </tr>
 </table>
 
-    <a href="{{route('user.edit', $user->id)}}" class="btn btn-success"
+    <a href="{{route('user.edit', $user->id)}}" class="btn btn-outline-info"
         style="margin-right: 20px">Edit</a>
 @endsection

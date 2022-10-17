@@ -49,12 +49,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="p-2"><a href="/about"> About Page</a></li>
-                        <li class="p-2"><a href="/motorPage"> Motor Page</a></li>
-                        <li class="p-2"><a href="/data"> Mijn motor posts</a></li>
+                        <li class="p-2" style="--bs-link-hover-color: grey"><a href="/about"> About Page</a></li>
+                        <li class="p-2" style="--bs-link-hover-color: grey"><a href="/motorPage"> Motor Page</a></li>
+                        <li class="p-2" style="--bs-link-hover-color: grey"><a href="/data"> Mijn motor posts</a></li>
 
                         @if(Auth::user() && Auth::user()->is_admin)
-                            <li class="p-2"><a href="/clients"> Users</a></li>
+                            <li class="p-2" style="--bs-link-hover-color: grey"><a href="/clients"> Users</a></li>
                         @elseif(Auth::guest())
                         @endif
 

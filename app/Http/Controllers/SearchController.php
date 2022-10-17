@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
+    //Search bar -> function that alows
     public function index(Request $request) {
 
-        //Search
         $searchedBike = $request->input('search');
 
         $motors = Motor::latest() ->where('Name', 'like', '%' . $searchedBike . '%')
@@ -23,9 +23,9 @@ class SearchController extends Controller
             compact( 'motors', 'searchedBike'));
     }
 
-//    public function show () {
-//
-//        return view('/layouts/motorPage',
-//            compact( 'motor'));
-//    }
+    public function show (Motor $motor) {
+
+        return view('/layouts/motorPage',
+            compact( 'motor'));
+    }
 }

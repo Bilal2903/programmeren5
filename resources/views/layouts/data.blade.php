@@ -29,13 +29,13 @@
 
 
             <div class="btn-groep">
-                <td><a href="{{ route('motor.edit', $motor->id)}}" class="btn btn-success" style="margin-right: 20px">Edit</a></td>
-                <td><a href="{{ route('motor.show', $motor->id) }}" class="btn btn-info" style="margin-right: 20px"> Details</a></td>
+                <td><a href="{{ route('motor.edit', $motor->id)}}" class="btn btn-outline-success" style="margin-right: 20px">Edit</a></td>
+                <td><a href="{{ route('motor.show', $motor->id) }}" class="btn btn-outline-info" style="margin-right: 20px"> Details</a></td>
                 <td>
                     <form action="{{ route('motor.destroy', $motor->id)}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button class="h-10 w-20 text-black rounded-lg bg-red-500 hover:bg-red-600" style="margin-right: 20px"  type="submit">Delete</button>
+                        <button class="btn btn-outline-danger" style="margin-right: 20px"  type="submit">Delete</button>
                     </form>
                 </td>
             </div>

@@ -4,10 +4,10 @@
 
 <h1 class="title text-3xl font-bold mb-2 m-3 p-3"> All Motor Bikes</h1>
 
-<div class="row mb-0">
+<div class="row mb-2 m-3">
     <div class="p-3">
-        <button class="h-10 w-50% text-black rounded-lg bg-blue-500 hover:bg-blue-600">
-            <a href="{{ route('motor.create') }}"> Create a motor post </a>
+        <button class="btn btn-outline-secondary">
+            <a href="{{ route('motor.create') }}" style="--bs-link-hover-color: white"> Create a motor post </a>
         </button>
     </div>
 </div>
@@ -28,7 +28,7 @@
         <div class="absolute top-2 right-2">
             <button
                 type="submit"
-                class="h-10 w-20 text-black rounded-lg bg-red-500 hover:bg-red-600"> Search
+                class="btn btn-outline-danger"> Search
             </button>
         </div>
     </div>
@@ -46,7 +46,7 @@
                     </h3>
                     <div class="border border-gray-200 w-full mb-6"></div>
 
-                    <img class="w-48 mr-6 mb-6"{{$motor->image}}>
+                    <img src="{{ asset("images/$motor->image") }}" style="width: 400px; height: 340px"/>
                     <div class="border border-gray-200 w-full mb-6"></div>
 
                     <div>

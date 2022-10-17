@@ -29,9 +29,9 @@
                             <span style="">@error('email'){{ $message }} @enderror</span>
                         </div>
 
-                        <div class="form-group" style="">
+                        <div class="form-group" style="padding-top: 20px">
                             <button type="submit" style="width: 100%; height: 35px"
-                                    class="btn btn-primary btn btn-primary bg-blue-500 hover:bg-blue-600"
+                                    class="btn btn-outline-info"
                                     name="create" value="Opslaan"> Edit je account
                             </button>
 
