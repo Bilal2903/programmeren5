@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class ClientsController extends Controller
 {
+
     public function __construct(){
 
         $users = User::all();

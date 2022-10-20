@@ -19,8 +19,7 @@ class UserController extends Controller
 
         if ($user = Auth::user()){
              return view ('user.details', compact('user'));
-        }else
-        {
+        }else {
             return redirect(route('motor.index'));
         }
 

@@ -37,7 +37,12 @@
 {{--Filter buttons--}}
 <div style="padding-left: 2vw">
     @foreach($categories as $category)
-        <button> <a href="{{route ('search.index', ['category' => $category->id])}}" type="button" class="btn btn-outline-info">{{$category->name}}</a> </button>
+        <button>
+            <a href="{{route ('search.index', ['category' => $category->id])}}"
+               type="button"
+               class="btn btn-outline-info">{{$category->name}}
+            </a>
+        </button>
     @endforeach
 </div>
 

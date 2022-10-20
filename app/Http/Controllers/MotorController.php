@@ -45,9 +45,19 @@ class MotorController extends Controller
 
     public function create(){
 
-        $categories = Category::all();
+//        $categories = Category::all();
 
-        return view('motor.create', compact('categories'));
+        if (Auth::user()->counter >=2){
+            $categories = Category::all();
+            return view('motor.create', compact('categories'));
+        }else {
+
+            $categories = Category::all();
+            $motors = Motor::all();
+            return view('layouts.motorPage', compact('motors', 'categories'));
+        }
+
+//        return view('motor.create', compact('categories'));
     }
 
 
