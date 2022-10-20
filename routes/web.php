@@ -30,8 +30,9 @@ Route::get('/about', [AboutController::class, 'show']);
 Route::get('/motorPage', [MotorController::class, 'index']);
 Route::get('/show', [MotorController::class, 'show']);
 Route::resource("motor", App\Http\Controllers\MotorController::class);
+Route::post('motor/{motor}/active', [MotorController::class, 'active'])->name('motor.active');
 
-//Post controller
+//search and filter controller
 Route::resource("search", SearchController::class);
 
 //Clients controller

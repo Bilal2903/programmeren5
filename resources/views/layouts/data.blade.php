@@ -17,6 +17,8 @@
     <th scope ="col">Edit</th>
     <th scope ="col">Detail</th>
     <th scope ="col">Delete</th>
+    <th scope ="col">Status</th>
+
     @foreach($motors as $motor)
         <tr>
             <td>{{$motor->id}}</td>
@@ -36,6 +38,16 @@
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-outline-danger" style="margin-right: 20px"  type="submit">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="{{route('motor.active', $motor)}}" method="post">
+                        @csrf
+                        @if($motor->active)
+                            <button type="submit" class="btn btn-outline-info">Actief</button>
+                        @else
+                            <button type="submit" class="btn btn-outline-dark">not active</button>
+                        @endif
                     </form>
                 </td>
             </div>

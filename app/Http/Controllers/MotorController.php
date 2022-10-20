@@ -27,10 +27,12 @@ class MotorController extends Controller
 
         $headTitle = 'All Motor Bikes';
 
-        $motors = motor::all();
+        $motors = Motor::where('active', '=', '1')->get();
+
+        $categories = Category::all();
 
         return view('/layouts/motorPage',
-            compact('headTitle', 'motors'));
+            compact('headTitle', 'motors', 'categories'));
     }
 
     // Show singel Bike
@@ -91,6 +93,7 @@ class MotorController extends Controller
         }
     }
 
+
     public function update(Motor $motor){
 
         $formFields = request()->validate([
@@ -104,6 +107,23 @@ class MotorController extends Controller
         $motor -> update($formFields);
 
         return redirect(route('motor.show', $motor->id));
+    }
+
+//    Function voor de active knop die is aangemaakt op de motor page
+    public function active(Motor $motor)
+    {
+        $currentStatus = $motor->active;
+        if ($currentStatus) {
+            $status = false;
+        }else {
+            $status = true;
+        }
+
+        $motor->active = $status;
+        $motor->save();
+
+        return redirect(route('user.index'));
+
     }
 
 }

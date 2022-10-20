@@ -34,19 +34,27 @@
     </div>
 </form>
 
+{{--Filter buttons--}}
+<div style="padding-left: 2vw">
+    @foreach($categories as $category)
+        <button> <a href="{{route ('search.index', ['category' => $category->id])}}" type="button" class="btn btn-outline-info">{{$category->name}}</a> </button>
+    @endforeach
+</div>
+
+
 
 <div class="lg:grid lg:grid-cols-3 gap-4 space-y-4 md:space-y-0 mx-4">
 
     @foreach($motors as $motor)
         <div class="mx-4">
             <card class="p-10">
-                <div class="flex flex-col items-center justify-center text-center border-2">
+                <div class="flex flex-col items-center justify-center text-center border-2" style="background-color: #AFC5A6">
                     <h3 class="text-2xl mb-2">
                         {{$motor->name}}
                     </h3>
                     <div class="border border-gray-200 w-full mb-6"></div>
 
-                    <img src="{{ asset("images/$motor->image") }}" style="width: 400px; height: 340px"/>
+                    <img src="{{ asset("images/$motor->image") }}" style="width: 350px; height: 340px; padding-bottom: 20px"/>
                     <div class="border border-gray-200 w-full mb-6"></div>
 
                     <div>

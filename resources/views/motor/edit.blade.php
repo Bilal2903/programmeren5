@@ -49,7 +49,8 @@
                         <div class="mb-6">
                             <div class="form-group m-2" style="">
                                 <label for="image">Bike Image:</label><br>
-                                <input type="file" id="image" name="image">
+                                <input type="file" id="image" name="image"
+                                       value="{{old('image', $details -> image)}}">
                                 <span style=""> @error('image'){{$message}} @enderror</span>
                             </div>
 
