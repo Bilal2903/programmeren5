@@ -7,9 +7,12 @@ use App\Models\Motor;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class MotorController extends Controller
 {
+
+    // dit zorgt ervoor dat je alle motors te zien krijgt op de motorPage
     public function __construct(){
 
         $headTitle = 'All Motor Bikes';
@@ -43,9 +46,8 @@ class MotorController extends Controller
     }
 
 
+    //Function voor het aan maken van een motor post. Na dat je 2 of meer keer iets hebt gezocht via de searchbar.
     public function create(){
-
-//        $categories = Category::all();
 
         if (Auth::user()->counter >=2){
             $categories = Category::all();
@@ -54,13 +56,15 @@ class MotorController extends Controller
 
             $categories = Category::all();
             $motors = Motor::all();
+
+            Session::flash('message', "Before you create a post, you have to search 2 or more posts with the searchbar.");
             return view('layouts.motorPage', compact('motors', 'categories'));
         }
 
-//        return view('motor.create', compact('categories'));
     }
 
 
+    // deze functie zorgt ervoor dat alles wordt opgeslagen na het invullen van de create
     public function store(Request $request){
 
         $formFields = $request->validate([
@@ -82,6 +86,7 @@ class MotorController extends Controller
 
     }
 
+    //Dit zorgt ervoor dat je een post kan verwijderen.
     public function destroy($id) {
 
         $motor = motor::find($id);
@@ -90,6 +95,7 @@ class MotorController extends Controller
         return redirect(route('motor.index'));
     }
 
+    //Dit zorgt ervoor dat je een post kan bewerken
     public function edit($motorId){
 
         $details = Motor::find($motorId);
@@ -104,6 +110,7 @@ class MotorController extends Controller
     }
 
 
+    //Dit zorgt ervoor dat je een post kan opslaan na het bewerken
     public function update(Motor $motor){
 
         $formFields = request()->validate([
@@ -111,7 +118,7 @@ class MotorController extends Controller
             'price' => 'required',
             'description' => 'required',
             'horsepower' => 'required',
-            'image' => 'nullable',
+            'image' => 'required',
         ]);
 
         $motor -> update($formFields);
@@ -119,7 +126,7 @@ class MotorController extends Controller
         return redirect(route('motor.show', $motor->id));
     }
 
-//    Function voor de active knop die is aangemaakt op de motor page
+    //Function voor de active knop die is aangemaakt op de motor page
     public function active(Motor $motor)
     {
         $currentStatus = $motor->active;

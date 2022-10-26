@@ -35,7 +35,7 @@ Route::post('motor/{motor}/active', [MotorController::class, 'active'])->name('m
 //search and filter controller
 Route::resource("search", SearchController::class);
 
-//Clients controller
+//Clients controller → overzicht van de users
 Route::get('/clients', [ClientsController::class, '__construct'])->name('clients');
 
 //User controller

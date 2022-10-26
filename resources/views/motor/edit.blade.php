@@ -48,11 +48,23 @@
 
                         <div class="mb-6">
                             <div class="form-group m-2" style="">
-                                <label for="image">Bike Image:</label><br>
+                                <label for="image">Bike Image:</label>
                                 <input type="file" id="image" name="image"
                                        value="{{old('image', $details -> image)}}">
-                                <span style=""> @error('image'){{$message}} @enderror</span>
+                                <span class="text-red-500 text-xs mt-1"> @error('image'){{ $message }} @enderror</span>
                             </div>
+
+                            {{--Aprilla RS 660--}}
+                            {{--Honda CBR1000RR--}}
+                            {{--Kawasaki H2R--}}
+
+                            {{--BMW S1000RR--}}
+                            {{--Ducati Panigale V2--}}
+                            {{--Suzuki GSX R1000R--}}
+
+                            {{--Yamaha MT-07--}}
+                            {{--Yamaha MT-10--}}
+                            {{--Yamaha R1--}}
 
                             <div class="form-group" style="">
                                 <button type="submit" style="width: 100%; height: 35px" class="btn btn-primary btn btn-primary bg-blue-500 hover:bg-blue-600"

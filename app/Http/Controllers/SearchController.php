@@ -10,13 +10,15 @@ use Illuminate\Support\Facades\Auth;
 
 class SearchController extends Controller
 {
-    //Search bar -> function that allows
+    //Functie voor de search bar en de filter.
     public function index(Request $request) {
 
         $searchedBike = $request->input('search');
 
+        //Dit telt het aantal keren dat je iets opzoekt.
         $this->counter();
 
+        //Dit zorgt ervoor dat hij in elke kolom kijkt naar je zoekopdracht
         if ($request->has('search')) {
             $motors = Motor::where('Name', 'like', '%' . $searchedBike . '%')
                 ->orWhere('price', 'like', '%' . $searchedBike . '%')
@@ -25,6 +27,7 @@ class SearchController extends Controller
                 ->orWhere('image', 'like', '%' . $searchedBike . '%')
             ->get();
 
+        //Dit zoekt op basis van de tags.
         }elseif ($request->has('category')) {
             $motors = Motor::where('category_id', '=', $request->query('category'))->get();
         }else{
@@ -39,6 +42,7 @@ class SearchController extends Controller
 
     }
 
+    // Dit is de functie die optelt als de persoon op zoeken drukt.
     public function counter(){
         $user_id = Auth::id();
         $user = User::find($user_id);

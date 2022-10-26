@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ClientsController extends Controller
 {
-
+//dit zorgt ervoor dat er een User overzicht wordt weer gegeven op de Users page
     public function __construct(){
 
         $users = User::all();

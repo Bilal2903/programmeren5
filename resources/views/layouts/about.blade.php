@@ -15,12 +15,10 @@
                             </div>
                         @endif
 
-                        {{ __('TODO') }}
-                        <li>Zoeken & Filteren</li>
-                        <li>Vrije tekst</li>
-                        <li>Beveiliging</li>
-                        <li>Schakelen van status</li>
-                        <li>Diepere validatie</li>
+                       <a>Op deze website kan je alles vinden gerelateerd met motoren.
+                          Ik heb een website gemaakt waar de motor fans hun eigen motoren op kunnen plaatsen.
+                          Op deze manier kan iedereen de motors bewonderen en eventueel inspiratie krijgen voor hun volgende motor.
+                       </a>
                     </div>
                 </div>
             </div>

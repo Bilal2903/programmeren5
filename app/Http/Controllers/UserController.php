@@ -8,13 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
+    //Dit zorgt ervoor dat je je eigen gemaakte posts kan zien en CRUD erop kan toepassen.
     public function index()
     {
         $motors = Auth::user()->motors;
         return view('layouts.data', compact('motors'));
     }
 
-
+    //Dit zorgt ervoor dat een user zijn eigen gegevens kan zien op de details pagina.
     public function show(User $user){
 
         if ($user = Auth::user()){
@@ -25,11 +27,13 @@ class UserController extends Controller
 
     }
 
+    //Dit zorgt ervoor dat een user zijn gegevens kan veranderen
     public function edit($id){
         $user = User::find($id);
         return view('user/edit', compact('id', 'user'));
     }
 
+    //Dit zorgt ervoor dat de user zijn bewerkte gegevens kan updaten om ze te behouden.
     public function update(Request $request, $id){
 
         $request ->validate([
