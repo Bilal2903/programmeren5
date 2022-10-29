@@ -57,7 +57,7 @@
 
                         @if(Auth::user() && Auth::user()->is_admin)
                             <li class="p-2" style="--bs-link-color: black; --bs-link-hover-color: grey"><a href="/clients"> Users</a></li>
-                        @elseif(Auth::guest())
+{{--                        @elseif(Auth::guest())--}}
                         @endif
                     </ul>
 
